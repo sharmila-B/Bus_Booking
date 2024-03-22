@@ -1,0 +1,120 @@
+<head>
+    <style>
+        label {
+            .centered {
+                display: flex;
+                justify-content: center;
+            }
+
+            .information {
+                width: 400px;
+            }
+
+            .register-tab {
+                width: 40%;
+                margin: 0 auto;
+                box-shadow: rgba(177, 177, 199, 0.28) 0px 4px 7px 12px;
+                padding: 20px;
+                background-color: rgb(193, 214, 236);
+                color: black;
+                font-weight: 500;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section class="vh-100"
+        style=" width: 100vw; height: 100vh; background-color: #F3887D; display: flex; justify-content: center;align-items: center;box-shadow: rgb(109 109 125 / 28%) 0px 4px 7px 12px;">
+        <div class="container h-100" style="text-align: center; background-color: #F3887D;">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-lg-12 col-xl-11">
+                    <div class="card text-black" style="border-radius: 25px; background-color: #fff;">
+                        <div class="card-body p-md-5">
+                            <div class="row justify-content-center">
+                                <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+                                    <div style="text-align: center;">
+                                        <h2 class="text-center fw-bold mb-5 mx-1 mx-md-4 mt-4"
+                                            style="font-family: Verdana, sans-serif;color: #5F95D7;">Passenger Signup
+                                        </h2>
+
+                                        <div class="mx-1 mx-md-4">
+                                            <form (ngSubmit)="registerPassenger()" style="text-align: center;">
+                                                <div class="d-flex flex-row align-items-center mb-4">
+                                                    <i class="fa fa-user me-3 fa-fw"></i>
+                                                    <div class="form-outline flex-fill mb-0">
+                                                        <label for="name">Name:</label>
+                                                        <input type="text" id="name" class="form-control" name="name"
+                                                            [(ngModel)]="passenger.passName"  (blur)="validateName()" [class.is-invalid]="nameInvalid && nameTouched" required />
+                                                            <div class="invalid-feedback" *ngIf="nameInvalid && nameTouched" class="text-danger">Name is required</div>
+                                                            <div *ngIf="passenger.passName && passenger.passName.length < 3" class="text-danger">Name should contain minimum 3 letters</div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="d-flex flex-row align-items-center mb-4">
+                                                    <i class="fa fa-lock fa-lg me-3 fa-fw"></i>
+                                                    <div class="form-outline flex-fill mb-0">
+                                                        <label for="emailId">Email:</label>
+                                                        <input type="email" id="emailId" class="form-control"
+                                                            name="emailId" [(ngModel)]="passenger.emailId" (blur)="validateEmail()" [class.is-invalid]="emailInvalid && emailTouched" required />
+                                                            <div class="invalid-feedback" *ngIf="emailInvalid && emailTouched" class="text-danger">Email is required</div>
+                                                            <div class="alert" *ngIf="emailerror" style="color: red;">
+                                                                {{ emailerror }}
+                                                              </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="d-flex flex-row align-items-center mb-4">
+                                                    <i class="fa fa-lock fa-lg me-3 fa-fw"></i>
+                                                    <div class="form-outline flex-fill mb-0">
+                                                        <label for="phoneNumber">Phone No:</label>
+                                                        <input type="text" id="phoneNumber" class="form-control"
+                                                            name="phoneNumber" [(ngModel)]="passenger.phoneNumber" (blur)="validatePhoneNo()" [class.is-invalid]="phoneInvalid && phoneTouched" required />
+                                                            <div class="invalid-feedback" *ngIf="phoneInvalid && phoneTouched" class="text-danger">Phone number is required</div>
+                                                            <div *ngIf="passenger.phoneNumber && passenger.phoneNumber.length !== 10" class="text-danger">Phone number must contain 10 digits</div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="d-flex flex-row align-items-center mb-4">
+                                                    <i class="fa fa-lock fa-lg me-3 fa-fw"></i>
+                                                    <div class="form-outline flex-fill mb-0">
+                                                        <label for="password">Password:</label>
+                                                        <input type="password" id="password" class="form-control"
+                                                            name="password" [(ngModel)]="passenger.password" (blur)="validatePassword()" [class.is-invalid]="passwordInvalid && passwordTouched" required />
+                                                            <div class="invalid-feedback" *ngIf="passwordInvalid && passwordTouched" class="text-danger">Password is required</div>
+                                                            <div class="alert" *ngIf="passworderror" style="color: red;">
+                                                                {{ passworderror }}
+                                                              </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                                                    <button type="submit" class="btn btn-primary btn-lg" style=" padding: 0.5rem 1rem; /* Adjust padding as needed */
+                                                    font-size: 1rem; /* Adjust font size as needed */
+                                                    white-space: nowrap; 
+                                                     background-color: #5F95D7;
+                                                     color: #fff;
+                                                     border: none;
+                                                     border-radius: 5px;
+                                                     font-size: 16px;
+                                                     cursor: pointer;
+                                                     font-family: Tahoma, sans-serif;">Sign Up</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+
+                                    <img src="../../../../assets/login.jpeg" class="img-fluid" alt="Sample image">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>

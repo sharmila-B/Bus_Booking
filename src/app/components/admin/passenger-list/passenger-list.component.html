@@ -1,0 +1,262 @@
+<html>
+
+<head>
+    <!-- <style>
+        body {
+            margin: 0;
+            background-color: #F3887D;
+            align-items: center;
+            justify-content: center;
+        }
+
+        html {
+            box-sizing: border-box;
+        }
+
+
+
+        .container {
+            align-items: center;
+            padding: 100px;
+        }
+
+
+
+        h3 {
+            font-family: Tahoma, sans-serif;
+            font-weight: bold;
+            color: white;
+        }
+
+        button {
+            padding: 0.5rem 1rem;
+            /* Adjust padding as needed */
+            font-size: 1rem;
+            /* Adjust font size as needed */
+            white-space: nowrap;
+            background-color: white;
+            color: #5F95D7;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            font-family: Tahoma, sans-serif;
+            font-weight: bold;
+        }
+    </style> -->
+
+    <style>
+        body {
+            align-items: center;
+        }
+
+        section {
+
+            background-color: #F3887D;
+            box-shadow: rgb(109 109 125 / 28%) 0px 4px 7px 12px;
+        }
+
+        p {
+            font-family: Verdana, sans-serif;
+            color: #5F95D7;
+            font-weight: bold;
+            font-size: 25px;
+        }
+
+        h3,
+        li {
+            font-family: Verdana, sans-serif;
+            color: #5F95D7;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        label {
+            font-family: Verdana, sans-serif;
+            color: black;
+
+        }
+
+        .label-input {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: left;
+        }
+
+        .label-input label {
+            flex: 1;
+            margin-right: 10px;
+            text-align: left;
+            font-size: 15px;
+            min-width: 150px;
+            font-weight: normal;
+        }
+
+        .label-input input {
+            flex: 1;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+            min-width: 100px;
+            justify-content: center;
+            margin-right: 10px;
+        }
+
+        .label-input button {
+            flex: 0;
+            padding: 8px;
+            min-width: 100px;
+            margin-left: 10px;
+        }
+
+        button {
+            padding: 0.5rem 1rem;
+            /* Adjust padding as needed */
+            font-size: 1rem;
+            /* Adjust font size as needed */
+            white-space: nowrap;
+            background-color: #5F95D7;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            font-family: Tahoma, sans-serif;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+
+        th,
+        td {
+            padding: 8px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #5F95D7;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="h-100">
+        <div class="container"> <br><br><br>
+            <div class="card text-black" style="background-color: #fff;">
+                <div class="card-body ">
+                    <div class="row justify-content-center">
+                        <div class="col-xl-8">
+                            <br><br>
+                            <p>Passenger List</p>
+                            <br><br>
+
+                            <ol>
+                                <div class="d-flex flex-row align-items-center  mb-4">
+                                    <div class="form-group form-outline flex-fill mb-0">
+                                        <li>
+                                            <div>
+                                                <h3>Get All Passengers</h3><br>
+                                                <button (click)="toggleTable()">View All Passengers</button><br><br>
+                                                <div [class.hidden]="!showTable">
+                                                    <table border="1" cellpadding="5">
+
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Passenger Id</th>
+                                                                <th>Passenger Name</th>
+                                                                <th>Phone Number</th>
+                                                                <th>Email Id</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr *ngFor="let passenger of passengers; let i = index"
+                                                                [class.odd-row]="i % 2 !== 0">
+                                                                <td>{{passenger.passId}}</td>
+                                                                <td>{{passenger.passName}}</td>
+                                                                <td>{{passenger.phoneNumber}}</td>
+                                                                <td>{{passenger.emailId}}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </div>
+                                </div><br>
+
+                                <div class="d-flex flex-row align-items-center mb-4">
+                                    <div class="form-group form-outline flex-fill mb-0">
+                                        <li>
+                                            <div>
+                                                <h3>Find Passenger by ID</h3><br>
+                                                <div class="col-xl-6">
+                                                    <div class="label-input">
+                                                        <label>Enter Passenger Id:</label>
+                                                        <input type="text" placeholder="Passenger Id"
+                                                            [(ngModel)]="passId" required>
+                                                        <div class="errFirst"></div>
+                                                        <!--<div *ngIf="passId.invalid && (passId.dirty || passId.touched)"> <div *ngIf="passId.errors.required" class="text-danger">Id Cannot be empty</div><br> -->
+                                                        <br>
+                                                        <button (click)="getPassengerById()"><i
+                                                                class="fa fa-search"></i> Find</button><br><br><br>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div *ngIf="showPassengerDetailsById">
+                                                <table border="1" cellpadding="5">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Passenger Id</th>
+                                                            <th>Passenger Name</th>
+                                                            <th>Phone Number</th>
+                                                            <th>Email Id</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>{{passenger.passId}}</td>
+                                                            <td>{{passenger.passName}}</td>
+                                                            <td>{{passenger.phoneNumber}}</td>
+                                                            <td>{{passenger.emailId}}</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </li>
+                                    </div>
+                                </div><br>
+
+
+
+
+                                <br><br>
+                            </ol>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br><br><br>
+
+
+    </section>
+    <br>
+</body>
+
+</html>

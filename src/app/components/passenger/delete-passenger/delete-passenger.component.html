@@ -1,0 +1,11 @@
+<h2>Delete Passenger by ID</h2>
+<div class="form-group">
+    <label><span class="text-danger">*</span>passId: </label>
+    <input type="passId" name="passId" id="passId" placeholder="Enter your Id" class="form-control" [(ngModel)]="passenger.passId" required>
+    <div class="errFirst"></div>
+    <div *ngIf="passengerForm.get('passId').invalid && (passengerForm.get('passId').dirty || passengerForm.get('passId').touched )">
+        <div *ngIf="passengerForm.get('passId').errors.required" class="text-danger">Id is required</div>
+</div><br><br>
+
+<button (click)="deletePassengerById(passId)">Delete Passenger</button>
+

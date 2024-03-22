@@ -1,0 +1,165 @@
+<html>
+
+<head>
+    <style>
+        body {
+            align-items: center;
+            text-align: center;
+        }
+
+        section {
+            background-color: #F3887D;
+            box-shadow: rgb(109 109 125 / 28%) 0px 4px 7px 12px;
+        }
+
+        p {
+            font-family: Verdana, sans-serif;
+            color: #5F95D7;
+            font-weight: bold;
+            font-size: 25px;
+        }
+
+        button {
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            white-space: nowrap;
+            background-color: #5F95D7;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            font-family: Tahoma, sans-serif;
+        }
+
+        .label-input {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .label-input label {
+            flex: 1;
+            margin-right: 10px;
+            text-align: left;
+            font-weight: bold;
+            font-size: 14px;
+            min-width: 150px;
+        }
+
+        .label-input input {
+            flex: 1;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+            min-width: 100px;
+            justify-content: center;
+        }
+
+        .text-danger {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="h-100">
+        <div class="col-md-6 offset-md-3">
+            <div class="container" style="text-align: center; background-color: #F3887D;">
+                <br><br><br>
+                <div class="card text-black" style=" background-color: #fff;">
+                    <div class="card-body ">
+                        <div class="row justify-content-center">
+                            <div class="col-xl-8">
+                                <br>
+                                <p>Add New Bus</p><br>
+
+                                <form [formGroup]="busdetailsForm" (ngSubmit)="onSubmit()">
+
+                                    <div class="label-input">
+                                        <label for="source">Source:</label>
+                                        <input type="text" class="form-control" placeholder="Enter source" id="source" formControlName="source">
+                                        <div *ngIf="busdetailsForm.get('source')?.hasError('required') && busdetailsForm.get('source')?.touched"
+                                            class="text-danger">
+                                            Source is required.
+                                        </div>
+                                    </div>
+
+                                    <div class="label-input">
+                                        <label for="destination">Destination:</label>
+                                        <input type="text" class="form-control" placeholder="Enter designation"  id="destination" formControlName="destination">
+                                        <div *ngIf="busdetailsForm.get('destination')?.hasError('required') && busdetailsForm.get('destination')?.touched"
+                                            class="text-danger">
+                                            Destination is required.
+                                        </div>
+                                    </div>
+
+                                    <div class="label-input">
+                                        <label for="totalSeats">Total Seats:</label>
+                                        <input type="totalSeats" class="form-control" placeholder="Enter total no. of seats" id="totalSeats" formControlName="totalSeats">
+                                        <div *ngIf="busdetailsForm.get('totalSeats')?.hasError('required') && busdetailsForm.get('totalSeats')?.touched"
+                                            class="text-danger">
+                                            TotalSeats is required.
+                                        </div>
+                                    </div>
+
+                                    <div class="label-input">
+                                        <label for="availableSeats">Available Seats:</label>
+                                        <input type="text" class="form-control" placeholder="Enter no. of available seats" id="availableSeats" formControlName="availableSeats">
+                                        <div *ngIf="busdetailsForm.get('availableSeats')?.hasError('required') && busdetailsForm.get('availableSeats')?.touched"
+                                            class="text-danger">
+                                            AvailableSeats is required.
+                                        </div>
+                                    </div>
+
+                                    <div class="label-input">
+                                        <label for="journeyDate">Journey Date:</label>
+                                        <input type="text" class="form-control" placeholder="yyyy-mm-dd" id="journeyDate" formControlName="journeyDate">
+                                        <div *ngIf="busdetailsForm.get('journeyDate')?.hasError('required') && busdetailsForm.get('journeyDate')?.touched"
+                                            class="text-danger">
+                                            Journey Date is required.
+                                        </div>
+                                    </div>
+
+                                    <div class="label-input">
+                                        <label for="journeyTime">Journey Time:</label>
+                                        <input type="text" class="form-control" placeholder="hr:min:sec" id="journeyTime" formControlName="journeyTime">
+                                        <div *ngIf="busdetailsForm.get('journeyTime')?.hasError('required') && busdetailsForm.get('journeyTime')?.touched"
+                                            class="text-danger">
+                                            Journey Time is required.
+                                        </div>
+                                    </div>
+
+                                    <div class="label-input">
+                                        <label for="ticketPrice">Ticket Price:</label>
+                                        <input type="text" class="form-control" placeholder="Enter ticket price" id="ticketPrice" formControlName="ticketPrice">
+                                        <div *ngIf="busdetailsForm.get('ticketPrice')?.hasError('required') && busdetailsForm.get('ticketPrice')?.touched"
+                                            class="text-danger">
+                                            TicketPrice is required.
+                                        </div>
+                                    </div>
+
+                                    <br><br>
+                                    <button class="btn btn-success" type="submit">Submit</button>
+                                    <button class="btn btn-secondary" style="margin-left:10px;" type="reset">Clear</button>
+                                </form>
+
+                                <br>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <br><br>
+            </div>
+
+        </div>
+    </section>
+    <br>
+</body>
+
+</html>

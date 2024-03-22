@@ -1,0 +1,32 @@
+.container {
+    text-align: center;
+    background-color: #F3887D;
+}
+.full-size-section {
+   width: 100vw; /* 100% viewport width */
+   height: 100vh; /* 100% viewport height */
+   background-color: #F3887D; /* Background color */
+   display: flex; /* Use flexbox to center content */
+   justify-content: center; /* Center content horizontally */
+   align-items: center; /* Center content vertically */
+   box-shadow: rgb(109 109 125 / 28%) 0px 4px 7px 12px;
+}
+
+
+p {
+    font-family: Verdana, sans-serif;
+    color: #5F95D7;
+}
+
+button {
+   padding: 0.5rem 1rem; /* Adjust padding as needed */
+   font-size: 1rem; /* Adjust font size as needed */
+   white-space: nowrap; 
+    background-color: #5F95D7;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: Tahoma, sans-serif;
+}

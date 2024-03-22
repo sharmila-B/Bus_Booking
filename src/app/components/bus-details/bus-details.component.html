@@ -1,0 +1,124 @@
+<html>
+
+<head>
+  <style>
+    body {
+      align-items: center;
+    }
+
+    section {
+
+      background-color: #F3887D;
+      box-shadow: rgb(109 109 125 / 28%) 0px 4px 7px 12px;
+    }
+
+    p {
+      font-family: Verdana, sans-serif;
+      color: #5F95D7;
+      font-weight: bold;
+      font-size: 25px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      border-right: 1px solid black;
+    }
+
+    th,
+    td {
+      padding: 8px;
+      text-align: center;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #5F95D7;
+      color: white;
+      border-right: 1px solid black;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+      border-right: 1px solid black;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    button {
+      padding: 0.5rem 1rem;
+      /* Adjust padding as needed */
+      font-size: 1rem;
+      /* Adjust font size as needed */
+      white-space: nowrap;
+      background-color: #5F95D7;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      font-family: Tahoma, sans-serif;
+    }
+  </style>
+</head>
+
+<body>
+  <section class="h-100">
+
+    <div class="container">
+      <br><br><br>
+      <div class="card text-black" style=" background-color: #fff;">
+        <div class="card-body">
+          <div class="row justify-content-center">
+            <div class="col-xl-10">
+              <br><br>
+              <p>Available Buses</p>
+              <div *ngIf="errormessage" class="alert alert-danger" role="alert">
+                {{ errormessage }}
+              </div>
+              <div class="d-flex flex-row align-items-center mb-4">
+                <div class="form-group form-outline flex-fill mb-0">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Bus Number</th>
+                        <th scope="col">Source</th>
+                        <th scope="col">Destination</th>
+                        <th scope="col">Journey Date</th>
+                        <th scope="col">Journey Time</th>
+                        <th scope="col">Total Seats</th>
+                        <th scope="col">Available Seats</th>
+                        <th scope="col">Ticket Price</th>
+                        <th scope="col">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let bus of buses; let i = index">
+                        <th scope="row">{{ i + 1 }}</th>
+                        <td>{{ bus.busNumber }}</td>
+                        <td>{{ bus.source }}</td>
+                        <td>{{ bus.destination }}</td>
+                        <td>{{ bus.journeyDate }}</td>
+                        <td>{{ bus.journeyTime }}</td>
+                        <td>{{ bus.totalSeats }}</td>
+                        <td>{{ bus.availableSeats }}</td>
+                        <td>{{ bus.ticketPrice }}</td>
+                        <td><button class="btn btn-primary" (click)="bookTicket(bus)">Book</button></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+
+</html>

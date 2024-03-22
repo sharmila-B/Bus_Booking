@@ -1,0 +1,49 @@
+<div class="bus-list">
+    <h2>Bus List</h2>
+    <button (click) = " findAllBuses()" >Get All buses</button><br>
+    <div *ngIf="buses && buses.length > 0">
+      <ul>
+        <tr *ngFor="let bus of buses">
+          <span>Bus Number: {{buses.busNumber}}</span><br>
+          <span>ArrivalDate: {{ buses.arrivalDate}}</span><br>
+          <span>ArrivalTime: {{ buses.arrivalTime}}</span><br>
+          <span>TotalSeats: {{ buses.totalSeats}}</span><br>
+          <span>AvailableSeats: {{ buses.availableSeats}}</span><br>
+          <span>Source: {{ buses.source}}</span><br>
+          <span>Destination: {{ buses.destination}}</span><br>
+          <span>Ticket Price: {{ buses.ticketPrice}}</span><br>
+          
+        </tr>
+    </ul>
+    </div><br><br>
+
+    <h2>Find bus by Number</h2>
+<input type="number" placeholder="busNumber" [(ngModel)]="bus.busNumber" required>
+<div class="errFirst"></div>
+<div *ngIf="bus.get('busNumber').invalid && (bus.get('busNumber').dirty || bus.get('busNumber').touched)">
+  <div *ngIf="bus.get('busNumber').errors.required" class="text-danger">Enter Bus number</div><br>
+  <button (click)="getBusByNumber">Get Bus</button><br><br>
+
+  <div>
+    <h2>Search Buses By Source And Destination</h2>
+    <div>
+      <label for="source">Source:</label>
+      <input type="text" id="source" name="source" [(ngModel)]="bus.source">
+    </div><br>
+    <div>
+      <label for="destination">Destination:</label>
+      <input type="text" id="destination" name="destination" [(ngModel)]="bus.destination">
+    </div><br>
+    <button (click)="searchBuses(source, destination)">Search</button>
+  </div>
+  
+  <div *ngIf="buses$ | async as buses">
+    <h3>Available Buses</h3>
+    <ul>
+      <li *ngFor="let bus of buses">
+        {{ bus.busNumber }} <br> {{  bus.source }} <br> {{  bus.destination }} <br>{{  bus.availableSeats }}
+      </li>
+    </ul>
+  </div>
+
+ 

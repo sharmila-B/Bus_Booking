@@ -1,0 +1,36 @@
+.navbar {
+    background-color: white; /* Add your desired background color */
+  }
+
+.navbar-container {
+    color: #F3887D;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.navbar-brand a{
+    width: 100%;
+}
+.navbar a {
+    text-align: center;
+    color: #5F95D7;
+    font-family: Tahoma, sans-serif;
+    font-weight: bold;
+    font-size: large;
+}
+
+.nav-items {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-right: 20px;
+    color:#F3887D;
+
+}
+
+.nav-items a {
+    text-decoration: none;
+    padding: 35px 20px;
+}
+

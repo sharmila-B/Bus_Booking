@@ -1,0 +1,71 @@
+<html>
+
+<head>
+  <style>
+    body {
+      align-items: center;
+      text-align: center;
+    }
+    .login-container{
+      height: auto;
+      width: auto;
+    }
+
+    section {
+
+      background-color: #F3887D;
+      box-shadow: rgb(109 109 125 / 28%) 0px 4px 7px 12px;
+    }
+
+    p {
+      font-family: Verdana, sans-serif;
+      color: #5F95D7;
+      font-weight: bold;
+      font-size: 19px;
+    }
+
+    button {
+      padding: 0.5rem 1rem;
+      /* Adjust padding as needed */
+      font-size: 1rem;
+      /* Adjust font size as needed */
+      white-space: nowrap;
+      background-color: #5F95D7;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      font-family: Tahoma, sans-serif;
+    }
+  </style>
+</head>
+
+<body>
+  <section class="h-100">
+    <div class="col-md-6 offset-md-3">
+
+      <div class="logout-container">
+        <br><br><br>
+        <div class="card text-black" style=" background-color: #fff;">
+          <div class="card-body ">
+            <div class="row justify-content-center">
+              <div class="d-flex flex-row align-items-center mb-4">
+                <div class="form-group form-outline flex-fill mb-0">
+                  <br><br><br><br><br>
+                  <p>Are you sure you want to logout?</p>
+
+                  <button (click)="logout()">Logout</button>
+                  <br><br><br><br><br>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br><br><br>
+      </div>
+    </div>
+  </section>
+</body>
+
+</html>

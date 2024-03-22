@@ -1,0 +1,123 @@
+<html>
+
+<head>
+  <style>
+    body {
+      align-items: center;
+    }
+
+    section {
+
+      background-color: #F3887D;
+      box-shadow: rgb(109 109 125 / 28%) 0px 4px 7px 12px;
+    }
+
+    p {
+      font-family: Verdana, sans-serif;
+      color: #5F95D7;
+      font-weight: bold;
+      font-size: 25px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      border-right: 1px solid black;
+    }
+
+    th,
+    td {
+      padding: 8px;
+      text-align: center;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #5F95D7;
+      color: white;
+      border-right: 1px solid black;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+      border-right: 1px solid black;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    button {
+      padding: 0.5rem 1rem;
+      /* Adjust padding as needed */
+      font-size: 1rem;
+      /* Adjust font size as needed */
+      white-space: nowrap;
+      background-color: #5F95D7;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      font-family: Tahoma, sans-serif;
+    }
+  </style>
+</head>
+
+<body>
+  <section class="h-100">
+
+    <div class="container">
+      <br><br><br>
+      <div class="card text-black" style=" background-color: #fff;">
+        <div class="card-body">
+          <div class="row justify-content-center">
+            <div class="col-xl-10">
+              <br><br>
+              <p>Confirmed Tickets:</p>
+              <div class="d-flex flex-row align-items-center mb-4">
+                <div class="form-group form-outline flex-fill mb-0">
+                  <div *ngIf="bookedTickets.length > 0">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Ticket ID</th>
+                          <th>Passenger Name</th>
+                          <th>Passenger Count</th>
+                          <th>Bus Number</th>
+                          <th>Journey Date</th>
+                          <th>Journey Time</th>
+                          <th>Source</th>
+                          <th>Destination</th>
+                          <th>Ticket Price</th>
+                          <th>Cancel ticket</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let ticket of bookedTickets">
+                          <td>{{ticket.ticketId }}</td>
+                          <td>{{ticket.passName}}</td>
+                          <td>{{ ticket.passCount }}</td>
+                          <td>{{ ticket.busNumber }}</td>
+                          <td>{{ ticket.journeyDate }}</td>
+                          <td>{{ ticket.journeyTime}}</td>
+                          <td>{{ ticket.source}}</td>
+                          <td>{{ticket.destination}}</td>
+                          <td>{{ticket.ticketPrice}}</td>
+                          <td><button (click)="deleteTicket(ticket.ticketId)">Cancel</button></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+
+</html>

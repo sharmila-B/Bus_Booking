@@ -1,0 +1,12 @@
+<div *ngIf="buses$ | async as buses; else loading">
+    <div *ngFor="let bus of buses">
+      <p>Bus Number: {{ bus.busNumber }}</p>
+      <!-- You can display other bus details here -->
+      <button (click)="deleteBus(bus.busNumber)">Delete</button>
+    </div>
+  </div>
+  
+  <ng-template #loading>
+    <p>Loading buses...</p>
+  </ng-template>
+  

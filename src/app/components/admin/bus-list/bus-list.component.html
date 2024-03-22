@@ -1,0 +1,235 @@
+<html>
+
+<head>
+  <style>
+    body {
+      align-items: center;
+    }
+
+    section {
+
+      background-color: #F3887D;
+      box-shadow: rgb(109 109 125 / 28%) 0px 4px 7px 12px;
+    }
+
+    p {
+      font-family: Verdana, sans-serif;
+      color: #5F95D7;
+      font-weight: bold;
+      font-size: 25px;
+    }
+
+    h3,
+    li {
+      font-family: Verdana, sans-serif;
+      color: #5F95D7;
+      font-weight: bold;
+      font-size: 20px;
+    }
+
+    label {
+      font-family: Verdana, sans-serif;
+      color: black;
+
+    }
+
+    .label-input {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: left;
+    }
+
+    .label-input label {
+      flex: 1;
+      margin-right: 10px;
+      text-align: left;
+      font-size: 15px;
+      min-width: 150px;
+      font-weight: normal;
+    }
+
+    .label-input input {
+      flex: 1;
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+      min-width: 100px;
+      justify-content: center;
+      margin-right: 10px;
+    }
+
+    .label-input button {
+      flex: 0;
+      padding: 8px;
+      min-width: 100px;
+      margin-left: 10px;
+    }
+
+    button {
+      padding: 0.5rem 1rem;
+      /* Adjust padding as needed */
+      font-size: 1rem;
+      /* Adjust font size as needed */
+      white-space: nowrap;
+      background-color: #5F95D7;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      font-family: Tahoma, sans-serif;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    th,
+    td {
+      padding: 8px;
+      text-align: center;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #5F95D7;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <section class="h-100">
+
+    <div class="container">
+      <br><br><br>
+      <div class="card text-black" style=" background-color: #fff;">
+        <div class="card-body">
+          <div class="row justify-content-center">
+            <div class="col-xl-10">
+              <br><br>
+              <p>Bus List</p>
+              <br>
+
+              <ol>
+                <div class="d-flex flex-row mb-4">
+                  <div class="form-group form-outline flex-fill mb-0">
+                    <li>
+                      <div>
+                        <h3>Find Bus by Bus Number</h3><br>
+                        <div class="col-xl-5">
+                          <div class="label-input">
+                            <label>Enter Bus Number: </label>
+                            <input type="text" placeholder="Bus number" [(ngModel)]="bus.busNumber" required>
+                            <div class="errFirst"></div>
+
+
+                            <button (click)="getBusByNumber(bus.busNumber)"><i class="fa fa-search"></i> Find
+                              Bus</button><br><br>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div *ngIf="showBusDetails">
+                        <h3>Bus Details</h3>
+                        <table border="1" cellpadding="5">
+                          <thead>
+                            <tr>
+                              <th>Bus Number</th>
+                              <th>Journey Date</th>
+                              <th>Journey Time</th>
+                              <th>Total Seats</th>
+                              <th>Available Seats</th>
+                              <th>Source</th>
+                              <th>Destination</th>
+                              <th>Ticket Price</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>{{ bus.busNumber }}</td>
+                              <td>{{ bus.journeyDate }}</td>
+                              <td>{{ bus.journeyTime }}</td>
+                              <td>{{ bus.totalSeats }}</td>
+                              <td>{{ bus.availableSeats }}</td>
+                              <td>{{ bus.source }}</td>
+                              <td>{{ bus.destination }}</td>
+                              <td>{{ bus.ticketPrice }}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </li>
+                  </div>
+                </div>
+
+                <div class="d-flex flex-row align-items-center mb-4">
+                  <div class="form-group form-outline flex-fill mb-0">
+                    <li>
+                      <div>
+                        <h3>Bus List</h3><br>
+                        <button (click)="toggleTable()">View/hide buses</button><br><br>
+                        <div [class.hidden]="!showTable">
+                          <table border="1" cellpadding="5">
+                            <thead>
+                              <tr>
+                                <th>Bus Number</th>
+                                <th>Journey Date</th>
+                                <th>Journey Time</th>
+                                <th>Total Seats</th>
+                                <th>Available Seats</th>
+                                <th>Source</th>
+                                <th>Destination</th>
+                                <th>Ticket Price</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let bus of buses; let i = index" [class.odd-row]="i % 2 !== 0">
+                                <td>{{ bus.busNumber }}</td>
+                                <td>{{ bus.journeyDate }}</td>
+                                <td>{{ bus.journeyTime }}</td>
+                                <td>{{ bus.totalSeats }}</td>
+                                <td>{{ bus.availableSeats }}</td>
+                                <td>{{ bus.source }}</td>
+                                <td>{{ bus.destination }}</td>
+                                <td>{{ bus.ticketPrice }}</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div><br>
+                    </li>
+
+                  </div>
+                </div>
+              </ol>
+              <br>
+            </div>
+            <br><br>
+          </div>
+        </div>
+      </div>
+      <br><br><br>
+    </div>
+
+  </section>
+
+  <br>
+
+</body>
+
+</html>

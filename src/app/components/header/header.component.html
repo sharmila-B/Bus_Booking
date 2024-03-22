@@ -1,0 +1,21 @@
+<nav class="navbar navbar-expand-sm navbar-light sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+      <img src="../../assets/logopro.png" width="100px" height="100px">
+    </a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <nav class="nav-items">
+        <i class="fa fa-home"></i><a (click)="gotourl('')" [class.selected]="url === '/'">Home</a>
+        <i class="fa fa-bus"></i><a (click)="gotourl('bus-details')"
+          [class.selected]="url === '/bus-details'">Bus-List</a>
+        <i class="fa fa-user-circle"></i><a (click)="gotourl('account')"
+          [class.selected]="url === '/account'">Account</a>
+        <i class="fa fa-question-circle"></i><a (click)="gotourl('about')"
+          [class.selected]="url === '/about'">About-us</a>
+        <i class="fa fa-mobile"></i><a (click)="gotourl('contact')" [class.selected]="url === '/contact'">Contact-us</a>
+      </nav>
+
+    </div>
+  </div>
+</nav>

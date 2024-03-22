@@ -1,0 +1,82 @@
+<!--<nav class="navbar navbar-expand-sm navbar-light">
+  <div class="container">
+    <a class="navbar-brand" href="#"> 
+      <img src="../../assets/logopro.png" width="100px" height="100px">
+    </a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <nav class="nav-items">
+    <i class="fa fa-home"></i><a (click)="gotourl('')" [class.selected]="url === '/'">Home</a>
+    <i class="fa fa-question-circle"></i><a (click)="gotourl('about')" [class.selected]="url === '/about'">About-us</a>
+    <i class="fa fa-user-circle"></i><a (click)="gotourl('account')" [class.selected]="url === '/account'">Account</a>
+    <i class="fa fa-mobile"></i><a (click)="gotourl('contact')" [class.selected]="url === '/contact'">Contact-us</a>
+  </nav>
+
+</div>
+</div>
+</nav> -->
+
+
+
+<!--<nav class="navbar navbar-expand-sm navbar-light">
+  <div class="navbar-container">
+    <a class="navbar-brand"> 
+      <img src="../../assets/logopro.png" width="100px" height="100px">
+    </a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <nav class="nav-items">
+        <i class="fa fa-home"></i><a (click)="gotourl('')" [class.selected]="url === '/'">Home</a>
+        <i class="fa fa-question-circle"></i><a (click)="gotourl('about')" [class.selected]="url === '/about'">About-us</a>
+        <i class="fa fa-user-circle"></i><a (click)="gotourl('account')" [class.selected]="url === '/account'">Account</a>
+        <i class="fa fa-mobile"></i><a (click)="gotourl('contact')" [class.selected]="url === '/contact'">Contact-us</a>
+    </nav>
+    </div>
+  </div>
+  </nav> -->
+
+ <!-- Header for guest users -->
+<app-header *ngIf="!isAdminLoggedIn && !isPassengerLoggedIn"></app-header>
+
+<!-- Header for logged-in users -->
+
+  <!-- Header for admin -->
+  <app-admin-header *ngIf="isAdminLoggedIn && !isPassengerLoggedIn"></app-admin-header>
+  
+  <!-- Header for passenger -->
+  <app-passenger-header *ngIf="!isAdminLoggedIn && isPassengerLoggedIn"></app-passenger-header>
+
+
+<!-- Router outlet for rendering the appropriate component based on route -->
+<router-outlet></router-outlet>
+
+
+<footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-content">
+      <div class="footer-section about">
+        <h3>About Us</h3>
+        <p>ProBus is a website specially designed for Passengers to book the tickets in online from their remote places.
+        </p>
+        <div class="contact">
+          <span><i class="fas fa-phone"></i> 123-456-7890</span>
+
+        </div>
+      </div>
+      <div class="footer-section links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; 2024 BusBookingPro. All rights reserved.
+  </div>
+</footer>

@@ -1,0 +1,175 @@
+<html>
+
+<head>
+    <style>
+        body {
+            align-items: center;
+            text-align: center;
+        }
+
+        section {
+            background-color: #F3887D;
+            box-shadow: rgb(109 109 125 / 28%) 0px 4px 7px 12px;
+        }
+
+        p {
+            font-family: Verdana, sans-serif;
+            color: #5F95D7;
+            font-weight: bold;
+            font-size: 25px;
+        }
+
+        button {
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            white-space: nowrap;
+            background-color: #5F95D7;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            font-family: Tahoma, sans-serif;
+        }
+
+        .label-input {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .label-input label {
+            flex: 1;
+            margin-right: 10px;
+            text-align: left;
+            font-weight: bold;
+            font-size: 14px;
+            min-width: 150px;
+        }
+
+        .label-input input {
+            flex: 1;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+            min-width: 100px;
+            justify-content: center;
+        }
+
+        .text-danger {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="h-100">
+        <div class="col-md-6 offset-md-3">
+            <div class="container" style="text-align: center; background-color: #F3887D;">
+                <br><br><br>
+                <div class="card text-black" style=" background-color: #fff;">
+                    <div class="card-body ">
+                        <div class="row justify-content-center">
+                            <div class="col-xl-8">
+                                <br>
+                                <p>Book Ticket</p><br>
+
+                                <form [formGroup]="ticketForm" (ngSubmit)="addTicket()">
+
+
+                                  <div class="label-input">
+                                    <label for="passName">Passenger Name:</label>
+                                    <input type="text" class="form-control" placeholder="Enter your name" id="passName" formControlName="passName">
+                                    <div *ngIf="ticketForm.get('passName')?.hasError('required') && ticketForm.get('passName')?.touched"
+                                        class="text-danger">
+                                        Passenger Name is required.
+                                    </div>
+                                </div>
+
+                                <div class="label-input">
+                                    <label for="passCount">No. of Tickets</label>
+                                    <input type="text" class="form-control" placeholder="Enter no. of tickets" id="passCount" formControlName="passCount" (change)="calculateTicketPrice()">
+                                    <div *ngIf="ticketForm.get('passCount')?.hasError('required') && ticketForm.get('passCount')?.touched"
+                                        class="text-danger">
+                                        No. of tickets is required.
+                                    </div>
+                                </div>
+                                <div class="label-input">
+                                    <label for="busNumber">Bus Number:</label>
+                                    <input type="text" class="form-control" placeholder="Enter busNumber" id="source" formControlName="busNumber" [value]="selectedBus?.busNumber">
+                                    <div *ngIf="ticketForm.get('busNumber')?.hasError('required') && ticketForm.get('busNumber')?.touched"
+                                        class="text-danger">
+                                        Bus Number is required.
+                                    </div>
+                                </div>
+
+
+                                    <div class="label-input">
+                                        <label for="source">Source:</label>
+                                        <input type="text" class="form-control" placeholder="Enter source" id="source" formControlName="source" [value]="selectedBus?.source">
+                                        <div *ngIf="ticketForm.get('source')?.hasError('required') && ticketForm.get('source')?.touched"
+                                            class="text-danger">
+                                            Source is required.
+                                        </div>
+                                    </div>
+
+                                    <div class="label-input">
+                                        <label for="destination">Destination:</label>
+                                        <input type="text" class="form-control" placeholder="Enter destination" id="destination" formControlName="destination" [value]="selectedBus?.destination">
+                                        <div *ngIf="ticketForm.get('destination')?.hasError('required') && ticketForm.get('destination')?.touched"
+                                            class="text-danger">
+                                            Destination is required.
+                                        </div>
+                                    </div>
+
+                                    <div class="label-input">
+                                        <label for="journeyDate">Journey Date:</label>
+                                        <input type="text" class="form-control" placeholder="yyyy-mm-dd" id="journeyDate" formControlName="journeyDate" [value]="selectedBus?.journeyDate">
+                                        <div *ngIf="ticketForm.get('journeyDate')?.hasError('required') && ticketForm.get('journeyDate')?.touched"
+                                            class="text-danger">
+                                            Journey Date is required.
+                                        </div>
+                                    </div>
+
+                                    <div class="label-input">
+                                        <label for="journeyTime">Journey Time:</label>
+                                        <input type="text" class="form-control" placeholder="hr:min:sec" id="journeyTime" formControlName="journeyTime" [value]="selectedBus?.journeyTime">
+                                        <div *ngIf="ticketForm.get('journeyTime')?.hasError('required') && ticketForm.get('journeyTime')?.touched"
+                                            class="text-danger">
+                                            Journey Time is required.
+                                        </div>
+                                    </div>
+
+                                    <div class="label-input">
+                                        <label for="ticketPrice">Ticket Price:</label>
+                                        <input type="text" class="form-control" placeholder="Enter ticket price" id="ticketPrice" formControlName="ticketPrice" [value]="selectedBus?.ticketPrice">
+                                        <div *ngIf="ticketForm.get('ticketPrice')?.hasError('required') && ticketForm.get('ticketPrice')?.touched"
+                                            class="text-danger">
+                                            TicketPrice is required.
+                                        </div>
+                                    </div>
+
+                                    <br><br>
+                                    <button class="btn btn-success" type="submit">Submit</button>
+                                    <button class="btn btn-secondary" style="margin-left:10px;" type="reset">Clear</button>
+                                </form>
+
+                                <br>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <br><br>
+            </div>
+
+        </div>
+    </section>
+    <br>
+</body>
+
+</html>

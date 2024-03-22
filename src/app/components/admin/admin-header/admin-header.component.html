@@ -1,0 +1,19 @@
+<nav class="navbar navbar-expand-sm navbar-light sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <img src="../../assets/logopro.png" width="100px" height="100px">
+      </a>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <nav class="nav-items">
+          <i class="fa fa-home"></i><a (click)="gotourl('/admin/admin-home')"[class.selected]="url === '/admin/admin-home'">Home</a>
+          <i class="fa fa-plus-circle"></i><a (click)="gotourl('/admin/add-bus')"[class.selected]="url === '/admin/add-bus'">Add-Bus</a>
+          <i class="fa fa-list-ul"></i><a (click)="gotourl('/admin/bus-list')"[class.selected]="url === '/admin/bus-list'">Bus-list</a>
+          <i class="fa fa-list-alt"></i><a (click)="gotourl('/admin/passenger-list')"[class.selected]="url === '/admin/passenger-list'">Passenger-list</a>
+          <i class="fa fa-ticket"></i><a (click)="gotourl('/admin/view-tickets')"[class.selected]="url === '/admin/view-tickets'">View-Tickets</a>
+          <i class="fa fa-sign-out"></i><a (click)="gotourl('/admin/logout')"[class.selected]="url === '/admin/logout'">Logout</a>
+        </nav>
+
+      </div>
+    </div>
+  </nav>
